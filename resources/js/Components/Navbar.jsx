@@ -1,8 +1,18 @@
-import { Link } from "@inertiajs/react";
+import { useEffect, useState } from "react";
+import NavLink from "./NavLink";
 
 export default function Navbar() {
+    const [url, setUrl] = useState(null);
+    const [patch, setPatch] = useState(false);
+    useEffect(() => {
+        setUrl(window.location.pathname);
+        console.log(window.location.pathname);
+    }, [url]);
+    const setLocation = () => {
+        setUrl(null);
+    };
     return (
-        <nav class="fixed top-0 bg-white-800">
+        <nav class="fixed top-0 left-0 bg-white-800">
             <div class="flex items-center w-screen h-10 bg-blue-500">
                 <div class="flex items-center">
                     <div>
@@ -24,23 +34,35 @@ export default function Navbar() {
                     </div>
                 </div>
             </div>
-            <div class="mx-auto px-4 shadow sm:px-6 lg:px-20">
+            <div class="mx-auto px-4 shadow bg-white sm:px-6 lg:px-20">
                 <div class="flex items-center justify-between h-13">
                     <div class="flex items-center">
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline">
-                                <a
-                                    href="/"
-                                    class="px-3 py-2 text-sm font-medium text-blue-600 border-b-4 border-blue-900 focus:outline-none"
-                                >
-                                    Food
-                                </a>
-                                <a
+                                <NavLink href="/">
+                                    <a
+                                        onClick={() => setLocation()}
+                                        class={`px-3 py-2 text-sm font-medium text-blue-600 ${
+                                            url == "/" &&
+                                            "border-b-4 border-blue-900"
+                                        } focus:outline-none`}
+                                    >
+                                        Food
+                                    </a>
+                                </NavLink>
+                                <NavLink
+                                    onClick={() => setLocation()}
                                     href="/transaksi"
-                                    class="ml-4 px-3 py-2 text-sm font-medium text-gray-900 hover:text-blue-400 hover:border-b-4 hover:border-blue-700 focus:outline-none focus:text-white focus:bg-gray-700"
                                 >
-                                    Transaksi
-                                </a>
+                                    <a
+                                        class={`ml-4 px-3 py-2 text-sm font-medium text-gray-900 hover:text-blue-400 hover:border-b-4 ${
+                                            url == "/transaksi" &&
+                                            "border-b-4 border-blue-900"
+                                        } hover:border-blue-700 focus:outline-none focus:text-white focus:bg-gray-700`}
+                                    >
+                                        Transaksi
+                                    </a>
+                                </NavLink>
                             </div>
                         </div>
                     </div>
