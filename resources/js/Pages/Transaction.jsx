@@ -14,10 +14,49 @@ export default function Transaction({ auth, laravelVersion, phpVersion }) {
     const [showModal, setShowModal] = useState(false);
     const [paymentAmount, setPaymentAmount] = useState(0);
 
+    const foodData = [
+        {
+            id: 1,
+            nama: "Sate",
+            harga: "12000",
+            gambar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2dN4_CNWOw_zaB9kKj_tI0_g-44Po6fQWIg&usqp=CAU",
+        },
+        {
+            id: 2,
+            nama: "Soto",
+            harga: "10000",
+            gambar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoRpUj2tnn1fLolcOVVGMwsBN7OHdBrBH3MA&usqp=CAU://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2dN4_CNWOw_zaB9kKj_tI0_g-44Po6fQWIg&usqp=CAU",
+        },
+        {
+            id: 3,
+            nama: "Nasi Kuning",
+            harga: "10000",
+            gambar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRho3sacdgsyRMmsIpeW70QC6gSJBsWRwu38w&usqp=CAU",
+        },
+        {
+            id: 4,
+            nama: "Martabak Mini",
+            harga: "5000",
+            gambar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlQP_aCfGS4qCIzAhc5G678xxFgWCB5mdSHw&usqp=CAU",
+        },
+        {
+            id: 5,
+            nama: "Rendang",
+            harga: "15000",
+            gambar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMiJe3fNsPIrMKiEVZD4NSZazQbqyMWE8RNQ&usqp=CAU",
+        },
+        {
+            id: 6,
+            nama: "Ayam Goreng",
+            harga: "20000",
+            gambar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyQln6jj9esSjdJ_xkCLFrW3exMv_L0Z13Ew&usqp=CAU",
+        },
+    ];
     const initData = async () => {
-        const itemProduct = await axios.get(`api/product`);
-        setProducts(itemProduct.data.produk);
-        setImageLink(itemProduct.data.imageUrl);
+        setProducts(foodData);
+        // const itemProduct = await axios.get(`api/product`);
+        // setProducts(itemProduct.data.produk);
+        // setImageLink(itemProduct.data.imageUrl);
     };
     const addCart = (item) => {
         const itemId = cartItems.findIndex((res) => res.id === item.id);
@@ -69,7 +108,7 @@ export default function Transaction({ auth, laravelVersion, phpVersion }) {
                                             <div class="bg-white rounded-lg overflow-hidden shadow-md">
                                                 <img
                                                     class="h-48 w-full object-cover"
-                                                    src={`${imageLink}/${item.gambar}`}
+                                                    src={`${item.gambar}`}
                                                     alt="Product image"
                                                 />
                                                 <div class="flex flex-col items-center w-full p-4">
