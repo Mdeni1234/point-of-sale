@@ -11,13 +11,14 @@ export default function ListProducts() {
 
     const getDataProducts = async () => {
         const res = await axios.get(`api/product`);
-        console.log(res.data);
-        setImageLink(res.data.imageUrl);
-        setProducts(res.data.produk);
+        console.log(res.status);
+        if (res.status == 200) {
+            setImageLink(res.data.imageUrl);
+            setProducts(res.data.produk);
+        }
         setInitData(!initData);
     };
     const editForm = (formData, image) => {
-        console.log(formData);
         setFormDataProduct({ ...formData, image });
         setFormProduct(!formProduct);
     };
@@ -56,6 +57,7 @@ export default function ListProducts() {
                         </thead>
                         <tbody>
                             {products !== null &&
+                                products.length > 0 &&
                                 products.map((data, index) => {
                                     return (
                                         <tr key={data.id}>
