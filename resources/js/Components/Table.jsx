@@ -22,7 +22,7 @@ export default function Table(props) {
                                     </td>
                                     <td>
                                         <img
-                                            src={`${data.gambar}`}
+                                            src={`${imageLink}/${data.gambar}`}
                                             alt="My profile"
                                             class="m-auto object-cover w-16 h-16"
                                         />

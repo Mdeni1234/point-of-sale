@@ -89,7 +89,7 @@ export default function Cart(props) {
                                                 <li class="flex py-6">
                                                     <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                                         <img
-                                                            src={`${cart.gambar}`}
+                                                            src={`${imageLink}/${cart.gambar}`}
                                                             alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch."
                                                             class="h-full w-full object-cover object-center"
                                                         />

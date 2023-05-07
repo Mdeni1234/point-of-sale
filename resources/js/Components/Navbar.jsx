@@ -6,10 +6,9 @@ export default function Navbar() {
     const [patch, setPatch] = useState(false);
     useEffect(() => {
         setUrl(window.location.pathname);
-        console.log(window.location.pathname);
-    }, [url]);
-    const setLocation = () => {
-        setUrl(null);
+    }, []);
+    const setLocation = (url) => {
+        setUrl(url);
     };
     return (
         <nav class="fixed top-0 left-0 bg-white-800">
@@ -41,7 +40,7 @@ export default function Navbar() {
                             <div class="ml-10 flex items-baseline">
                                 <NavLink href="/">
                                     <a
-                                        onClick={() => setLocation()}
+                                        onClick={() => setLocation("/")}
                                         class={`px-3 py-2 text-sm font-medium text-blue-600 ${
                                             url == "/" &&
                                             "border-b-4 border-blue-900"
@@ -51,7 +50,7 @@ export default function Navbar() {
                                     </a>
                                 </NavLink>
                                 <NavLink
-                                    onClick={() => setLocation()}
+                                    onClick={() => setLocation("/transaksi")}
                                     href="/transaksi"
                                 >
                                     <a
