@@ -53,10 +53,10 @@ export default function Transaction({ auth, laravelVersion, phpVersion }) {
         },
     ];
     const initData = async () => {
-        // setProducts(foodData);
-        const itemProduct = await axios.get(`api/product`);
-        setProducts(itemProduct.data.produk);
-        setImageLink(itemProduct.data.imageUrl);
+        setProducts(foodData);
+        // const itemProduct = await axios.get(`api/product`);
+        // setProducts(itemProduct.data.produk);
+        // setImageLink(itemProduct.data.imageUrl);
     };
     const addCart = (item) => {
         const itemId = cartItems.findIndex((res) => res.id === item.id);
@@ -108,7 +108,7 @@ export default function Transaction({ auth, laravelVersion, phpVersion }) {
                                             <div class="bg-white rounded-lg overflow-hidden shadow-md">
                                                 <img
                                                     class="h-48 w-full object-cover"
-                                                    src={`${imageLink}/${item.gambar}`}
+                                                    src={`${item.gambar}`}
                                                     alt="Product image"
                                                 />
                                                 <div class="flex flex-col items-center w-full p-4">

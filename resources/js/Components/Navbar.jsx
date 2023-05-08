@@ -3,7 +3,6 @@ import NavLink from "./NavLink";
 
 export default function Navbar() {
     const [url, setUrl] = useState(null);
-    const [patch, setPatch] = useState(false);
     useEffect(() => {
         setUrl(window.location.pathname);
     }, []);
